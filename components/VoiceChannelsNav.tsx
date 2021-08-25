@@ -14,9 +14,7 @@ const VoiceChannelsNav: React.VFC<Props> = (props) => {
 
   return (
     <Box>
-      <Box paddingX='3' paddingY='3' boxShadow='lg'>
-        {guild.isLoading ? <></> : <GuildHeader guild={guild.data} />}
-      </Box>
+      {guild.isLoading ? <></> : <GuildHeader guild={guild.data} />}
       <Box marginY='5' paddingLeft='3' paddingRight='3'>
         {voiceChannels.isLoading ? (
           <></>

@@ -10,7 +10,13 @@ const GlobalFooter: React.VFC = () => {
           <Text color='gray.400' fontSize='small'>
             Discord VoiceChat Statistics
           </Text>
-          <Icon as={AiOutlineGithub} color='gray.400' />
+          <Link
+            href='https://github.com/tabo-syu/discord-voicechat-observer-frontend'
+            isExternal={true}
+            lineHeight='16px'
+          >
+            <Icon as={AiOutlineGithub} color='gray.400' />
+          </Link>
         </HStack>
       </Box>
     </footer>

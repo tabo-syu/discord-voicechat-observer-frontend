@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import { GuildResponse } from '../utils/types';
 
 type Props = {
@@ -7,9 +7,11 @@ type Props = {
 };
 const GuildHeader: React.VFC<Props> = (props) => {
   return (
-    <Heading as='h2' size='sm' paddingBottom='1'>
-      {props.guild.name}
-    </Heading>
+    <Box paddingX='3' paddingY='3.5' boxShadow='lg'>
+      <Heading as='h2' size='sm'>
+        {props.guild.name}
+      </Heading>
+    </Box>
   );
 };
 

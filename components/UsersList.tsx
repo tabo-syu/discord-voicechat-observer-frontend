@@ -39,7 +39,7 @@ const UsersList: React.VFC<Props> = (props) => {
               size='sm'
               src={user.avatarUrl}
               name={user.username}
-              marginRight='2'
+              marginRight='3'
             />
             {user.username}
           </Button>

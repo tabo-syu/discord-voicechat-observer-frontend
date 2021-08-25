@@ -23,10 +23,10 @@ const VoiceChannelsList: React.VFC<Props> = (props) => {
           <Button
             as='a'
             justifyContent='flex-start'
-            leftIcon={<MdVolumeUp size='18' />}
+            leftIcon={<MdVolumeUp size={21} />}
             variant='ghost'
             isFullWidth={true}
-            size='sm'
+            size='md'
             paddingLeft='1'
           >
             {voiceChannel.name}

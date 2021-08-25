@@ -18,3 +18,18 @@ export type UserResponse = {
   username: string;
   avatarUrl: string;
 };
+
+export type SessionResponse = {
+  id: string;
+  voiceChannelId: string;
+  startedAt: string;
+  endedAt: string;
+};
+
+export type SessionLogResponse = {
+  id: string;
+  sessionId: string;
+  userId: string;
+  action: 'joined' | 'left';
+  createdAt: string;
+};
