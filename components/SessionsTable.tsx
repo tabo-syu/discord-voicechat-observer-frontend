@@ -7,8 +7,10 @@ import {
   Th,
   Td,
   Avatar,
+  Link as ChakraLink,
   AvatarGroup,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { SessionResponse } from '../utils/types';
 import { useSessionUsers } from '../utils/swr';
 
@@ -29,8 +31,12 @@ const SessionUsersIcon: React.VFC<CellProps> = (props) => {
   );
 };
 
-type TableProps = { sessions: SessionResponse[] };
+type TableProps = { sessions: SessionResponse[]; isLoading: boolean };
 const SessionsTable: React.VFC<TableProps> = (props) => {
+  if (props.isLoading) {
+    return <></>;
+  }
+
   return (
     <Table variant='simple'>
       <Thead>
@@ -46,8 +52,16 @@ const SessionsTable: React.VFC<TableProps> = (props) => {
           return (
             <Tr key={session.id}>
               <Td>{index + 1}</Td>
-              <Td>{session.startedAt}</Td>
-              <Td>{session.endedAt}</Td>
+              <Td>
+                <ChakraLink as={Link} href={`/sessions/${session.id}`} passHref>
+                  {session.startedAt}
+                </ChakraLink>
+              </Td>
+              <Td>
+                <ChakraLink as={Link} href={`/sessions/${session.id}`} passHref>
+                  {session.endedAt}
+                </ChakraLink>
+              </Td>
               <Td>
                 <SessionUsersIcon sessionId={session.id} />
               </Td>

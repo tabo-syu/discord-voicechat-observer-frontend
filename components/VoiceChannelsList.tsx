@@ -6,8 +6,13 @@ import { VoiceChannelResponse } from '../utils/types';
 
 type Props = {
   voiceChannels: VoiceChannelResponse[];
+  isLoading: boolean;
 };
 const VoiceChannelsList: React.VFC<Props> = (props) => {
+  if (props.isLoading) {
+    return <></>;
+  }
+
   return (
     <Stack spacing='0.5'>
       <Text marginBottom='1' fontSize='xs' fontWeight='bold'>
