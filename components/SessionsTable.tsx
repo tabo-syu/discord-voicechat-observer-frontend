@@ -7,7 +7,8 @@ import {
   Th,
   Td,
   Avatar,
-  Link as ChakraLink,
+  LinkBox,
+  LinkOverlay,
   AvatarGroup,
 } from '@chakra-ui/react';
 import Link from 'next/link';
@@ -50,22 +51,31 @@ const SessionsTable: React.VFC<TableProps> = (props) => {
       <Tbody>
         {props.sessions.map((session, index) => {
           return (
-            <Tr key={session.id}>
+            <LinkBox
+              as={Tr}
+              key={session.id}
+              _hover={{ backgroundColor: 'whiteAlpha.200' }}
+              transitionDuration='normal'
+            >
               <Td>{index + 1}</Td>
               <Td>
-                <ChakraLink as={Link} href={`/sessions/${session.id}`} passHref>
-                  {session.startedAt}
-                </ChakraLink>
+                <Link href={`/sessions/${session.id}`} passHref>
+                  <LinkOverlay>{session.startedAt}</LinkOverlay>
+                </Link>
               </Td>
               <Td>
-                <ChakraLink as={Link} href={`/sessions/${session.id}`} passHref>
-                  {session.endedAt}
-                </ChakraLink>
+                <Link href={`/sessions/${session.id}`} passHref>
+                  <LinkOverlay>{session.endedAt}</LinkOverlay>
+                </Link>
               </Td>
               <Td>
-                <SessionUsersIcon sessionId={session.id} />
+                <Link href={`/sessions/${session.id}`} passHref>
+                  <LinkOverlay>
+                    <SessionUsersIcon sessionId={session.id} />
+                  </LinkOverlay>
+                </Link>
               </Td>
-            </Tr>
+            </LinkBox>
           );
         })}
       </Tbody>
