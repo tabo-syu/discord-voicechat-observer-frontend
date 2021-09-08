@@ -1,4 +1,5 @@
 import React from 'react';
+import utcToTz from '../utils/date';
 import {
   Table,
   Thead,
@@ -42,7 +43,7 @@ const SessionsTable: React.VFC<TableProps> = (props) => {
     <Table variant='simple'>
       <Thead>
         <Tr>
-          <Th>ID</Th>
+          <Th>No.</Th>
           <Th>開始時刻</Th>
           <Th>終了時刻</Th>
           <Th>参加者</Th>
@@ -60,12 +61,16 @@ const SessionsTable: React.VFC<TableProps> = (props) => {
               <Td>{index + 1}</Td>
               <Td>
                 <Link href={`/sessions/${session.id}`} passHref>
-                  <LinkOverlay>{session.startedAt}</LinkOverlay>
+                  <LinkOverlay>
+                    {utcToTz(session.startedAt, 'Asia/Tokyo')}
+                  </LinkOverlay>
                 </Link>
               </Td>
               <Td>
                 <Link href={`/sessions/${session.id}`} passHref>
-                  <LinkOverlay>{session.endedAt}</LinkOverlay>
+                  <LinkOverlay>
+                    {utcToTz(session.endedAt, 'Asia/Tokyo')}
+                  </LinkOverlay>
                 </Link>
               </Td>
               <Td>
