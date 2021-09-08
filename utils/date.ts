@@ -1,10 +1,16 @@
-import { format } from 'date-fns';
+import { format, formatDistance } from 'date-fns';
+import ja from 'date-fns/locale/ja';
 import { utcToZonedTime } from 'date-fns-tz';
 
-const utcToTz = (date: string, timezone: string) => {
-  const jstDate = utcToZonedTime(new Date(date), timezone);
+const utcToTokyo = (date: string) => {
+  const jstDate = utcToZonedTime(new Date(date), 'Asia/Tokyo');
 
-  return format(jstDate, 'yyyy/MM/dd HH:mm:ss');
+  return format(jstDate, 'yyyy/MM/dd (eee) HH:mm:ss', { locale: ja });
 };
 
-export default utcToTz;
+const dateDistance = (date: string, baseDate: string) =>
+  formatDistance(new Date(date), new Date(baseDate), {
+    locale: ja,
+  });
+
+export { utcToTokyo, dateDistance };
