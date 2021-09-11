@@ -33,7 +33,12 @@ const SessionUsersIcon: React.VFC<CellProps> = (props) => {
   );
 };
 
-type TableProps = { sessions: SessionResponse[]; isLoading: boolean };
+type TableProps = {
+  sessions: SessionResponse[];
+  isLoading: boolean;
+  guildId: string;
+  voiceChannelId: string;
+};
 const SessionsTable: React.VFC<TableProps> = (props) => {
   if (props.isLoading) {
     return <></>;
@@ -61,24 +66,36 @@ const SessionsTable: React.VFC<TableProps> = (props) => {
             >
               <Td>{index + 1}</Td>
               <Td>
-                <Link href={`/sessions/${session.id}`} passHref>
+                <Link
+                  href={`/guilds/${props.guildId}/${props.voiceChannelId}/${session.id}`}
+                  passHref
+                >
                   <LinkOverlay>{utcToTokyo(session.startedAt)}</LinkOverlay>
                 </Link>
               </Td>
               <Td>
-                <Link href={`/sessions/${session.id}`} passHref>
+                <Link
+                  href={`/guilds/${props.guildId}/${props.voiceChannelId}/${session.id}`}
+                  passHref
+                >
                   <LinkOverlay>{utcToTokyo(session.endedAt)}</LinkOverlay>
                 </Link>
               </Td>
               <Td>
-                <Link href={`/sessions/${session.id}`} passHref>
+                <Link
+                  href={`/guilds/${props.guildId}/${props.voiceChannelId}/${session.id}`}
+                  passHref
+                >
                   <LinkOverlay>
                     {dateDistance(session.endedAt, session.startedAt)}
                   </LinkOverlay>
                 </Link>
               </Td>
               <Td>
-                <Link href={`/sessions/${session.id}`} passHref>
+                <Link
+                  href={`/guilds/${props.guildId}/${props.voiceChannelId}/${session.id}`}
+                  passHref
+                >
                   <LinkOverlay>
                     <SessionUsersIcon sessionId={session.id} />
                   </LinkOverlay>

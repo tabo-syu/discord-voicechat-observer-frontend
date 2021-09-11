@@ -1,15 +1,15 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import GuildHeader from '../../components/GuildHeader';
-import VoiceChannelsList from '../../components/VoiceChannelsList';
-import UsersList from '../../components/UsersList';
-import SideNav from '../../components/SideNav';
+import GuildHeader from '../../../components/GuildHeader';
+import VoiceChannelsList from '../../../components/VoiceChannelsList';
+import UsersList from '../../../components/UsersList';
+import SideNav from '../../../components/SideNav';
 
 import {
   useGuild,
   useVoiceChannels,
   useGuildParticipants,
-} from '../../utils/swr';
+} from '../../../utils/swr';
 
 const Guilds = () => {
   const router = useRouter();
@@ -37,7 +37,6 @@ const Guilds = () => {
           </Box>
         </SideNav>
       </Box>
-      <Box></Box>
     </Flex>
   );
 };
