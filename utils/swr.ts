@@ -92,6 +92,16 @@ export const useVoiceChannelSessionLogs = (voiceChannelId: string) => {
   };
 };
 
+export const useSession = (sessionId: string) => {
+  const { data, error } = useSWR(`${domain}/sessions/${sessionId}`, fetcher);
+
+  return {
+    data: data as SessionResponse,
+    isLoading: !error && !data,
+    isError: error,
+  };
+};
+
 export const useSessionUsers = (sessionId: string) => {
   const { data, error } = useSWR(
     `${domain}/sessions/${sessionId}/users`,
@@ -100,6 +110,19 @@ export const useSessionUsers = (sessionId: string) => {
 
   return {
     data: data as UserResponse[],
+    isLoading: !error && !data,
+    isError: error,
+  };
+};
+
+export const useSessionSessionLogs = (sessionId: string) => {
+  const { data, error } = useSWR(
+    `${domain}/sessions/${sessionId}/sessionLogs`,
+    fetcher
+  );
+
+  return {
+    data: data as SessionLogResponse[][],
     isLoading: !error && !data,
     isError: error,
   };

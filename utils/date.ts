@@ -10,7 +10,20 @@ const utcToTokyo = (date: string) => {
   return format(jstDate, 'yyyy/MM/dd (eee) HH:mm:ss', { locale });
 };
 
+const utcToSecond = (date: string) => {
+  const jstDate = utcToZonedTime(new Date(date), 'Asia/Tokyo');
+
+  return Date.UTC(
+    jstDate.getFullYear(),
+    jstDate.getMonth(),
+    jstDate.getDate(),
+    jstDate.getHours(),
+    jstDate.getMinutes(),
+    jstDate.getSeconds()
+  );
+};
+
 const dateDistance = (date: string, baseDate: string) =>
   formatDistance(new Date(date), new Date(baseDate), { locale });
 
-export { utcToTokyo, dateDistance };
+export { utcToTokyo, utcToSecond, dateDistance };

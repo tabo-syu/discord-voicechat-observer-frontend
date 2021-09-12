@@ -1,44 +1,21 @@
-import { Box, Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import GuildHeader from '../../../components/GuildHeader';
-import VoiceChannelsList from '../../../components/VoiceChannelsList';
-import UsersList from '../../../components/UsersList';
-import SideNav from '../../../components/SideNav';
+import Layout from '../../../components/layouts/DefaultLayout';
+import GuildLayout from '../../../components/layouts/GuildLayout';
+import { ReactElement } from 'react';
 
-import {
-  useGuild,
-  useVoiceChannels,
-  useGuildParticipants,
-} from '../../../utils/swr';
+const Page = () => {
+  return <></>;
+};
 
-const Guilds = () => {
+Page.getLayout = function GetLayout(page: ReactElement) {
   const router = useRouter();
   const guildId = router.query.guildId;
-  const guild = useGuild(guildId as string);
-  const voiceChannels = useVoiceChannels(guildId as string);
-  const participants = useGuildParticipants(guildId as string);
 
   return (
-    <Flex height='100%'>
-      <Box flexShrink={0}>
-        <SideNav>
-          <GuildHeader guild={guild.data} isLoading={guild.isLoading} />
-          <Box marginY='5' paddingLeft='3' paddingRight='3'>
-            <VoiceChannelsList
-              voiceChannels={voiceChannels.data}
-              isLoading={voiceChannels.isLoading}
-            />
-          </Box>
-          <Box marginY='5' paddingLeft='3' paddingRight='3'>
-            <UsersList
-              users={participants.data}
-              isLoading={participants.isLoading}
-            />
-          </Box>
-        </SideNav>
-      </Box>
-    </Flex>
+    <Layout>
+      <GuildLayout guildId={guildId as string}>{page}</GuildLayout>
+    </Layout>
   );
 };
 
-export default Guilds;
+export default Page;

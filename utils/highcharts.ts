@@ -67,6 +67,11 @@ const displayOptions: Options = {
   xAxis: {
     dateTimeLabelFormats: dateFormat,
   },
+  yAxis: {
+    title: {
+      text: undefined,
+    },
+  },
 };
 
 if (typeof Highcharts === 'object') {
