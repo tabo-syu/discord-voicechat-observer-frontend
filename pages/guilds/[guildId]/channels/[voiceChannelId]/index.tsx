@@ -16,7 +16,6 @@ const Page = () => {
   return (
     <SessionsTable
       guildId={guildId as string}
-      voiceChannelId={voiceChannelId as string}
       sessions={sessions.data}
       isLoading={sessions.isLoading}
     />

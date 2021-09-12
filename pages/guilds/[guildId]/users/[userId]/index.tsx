@@ -1,22 +1,23 @@
+import { ReactElement } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../../../../../layouts/DefaultLayout';
 import GuildLayout from '../../../../../layouts/GuildLayout';
-import VoiceChannelLayout from '../../../../../layouts/VoiceChannelLayout';
+import UserLayout from '../../../../../layouts/UserLayout';
 import SessionsTable from '../../../../../components/SessionsTable';
-import { ReactElement } from 'react';
-
-import { useVoiceChannelSessions } from '../../../../../utils/swr';
+import { useGuildParticipantSessions } from '../../../../../utils/swr';
 
 const Page = () => {
   const router = useRouter();
   const guildId = router.query.guildId;
-  const voiceChannelId = router.query.voiceChannelId;
-  const sessions = useVoiceChannelSessions(voiceChannelId as string);
+  const userId = router.query.userId;
+  const sessions = useGuildParticipantSessions(
+    guildId as string,
+    userId as string
+  );
 
   return (
     <SessionsTable
       guildId={guildId as string}
-      voiceChannelId={voiceChannelId as string}
       sessions={sessions.data}
       isLoading={sessions.isLoading}
     />
@@ -25,15 +26,13 @@ const Page = () => {
 
 Page.getLayout = function GetLayout(page: ReactElement) {
   const router = useRouter();
-  const guildId = router.query.guildId;
-  const voiceChannelId = router.query.voiceChannelId;
+  const guildId = router.query.guildId as string;
+  const userId = router.query.userId as string;
 
   return (
     <Layout>
       <GuildLayout guildId={guildId as string}>
-        <VoiceChannelLayout voiceChannelId={voiceChannelId as string}>
-          {page}
-        </VoiceChannelLayout>
+        <UserLayout userId={userId}>{page}</UserLayout>
       </GuildLayout>
     </Layout>
   );

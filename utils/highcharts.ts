@@ -80,7 +80,7 @@ const themeOptions: Options = {
  */
 const dateFormat = {
   day: '%m/%e(%a) %H:%M',
-  second: '%m/%e(%a) %H:%M:%S',
+  second: '%H:%M:%S',
 };
 const displayOptions: Options = {
   credits: {
