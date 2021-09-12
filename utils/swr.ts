@@ -7,9 +7,10 @@ import {
   SessionLogResponse,
 } from './types';
 
+const domain = process.env.NEXT_PUBLIC_REQUEST_DOMAIN;
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 const SWR = <ResponseType>(path: string) => {
-  const { data, error } = useSWR(`http://localhost:3001${path}`, fetcher);
+  const { data, error } = useSWR(`${domain}${path}`, fetcher);
 
   return {
     data: data as ResponseType,
