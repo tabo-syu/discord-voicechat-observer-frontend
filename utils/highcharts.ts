@@ -1,20 +1,39 @@
-import Highcharts, { Options } from 'highcharts';
+import Highcharts, { color, Options } from 'highcharts';
 import xrange from 'highcharts/modules/xrange';
 
 /**
  * Theme options
  */
-const textColor = 'var(--chakra-colors-whiteAlpha-900)';
+const font = {
+  family: 'var(--chakra-fonts-body)',
+  color: {
+    white: 'var(--chakra-colors-whiteAlpha-900)',
+  },
+  weight: {
+    bold: 'var(--chakra-fontWeights-bold)',
+  },
+  size: {
+    xs: 'var(--chakra-fontSizes-xs)',
+    sm: 'var(--chakra-fontSizes-sm)',
+    md: 'var(--chakra-fontSizes-md)',
+    lg: 'var(--chakra-fontSizes-lg)',
+  },
+};
 const themeOptions: Options = {
   chart: {
     backgroundColor: 'transparent',
+    colorCount: 9,
     style: {
-      color: textColor,
+      color: font.color.white,
+      fontFamily: font.family,
+      border: font.color.white,
     },
   },
   title: {
     style: {
-      color: textColor,
+      color: font.color.white,
+      fontSize: font.size.lg,
+      fontWeight: font.weight.bold,
     },
   },
   colors: [
@@ -27,20 +46,31 @@ const themeOptions: Options = {
     'var(--chakra-colors-red-500)',
     'var(--chakra-colors-orange-500)',
     'var(--chakra-colors-yellow-500)',
-    'var(--chakra-colors-gray-500)',
   ],
   xAxis: {
     labels: {
       style: {
-        color: textColor,
+        fontWeight: font.weight.bold,
+        fontSize: font.size.xs,
+        color: font.color.white,
       },
     },
   },
   yAxis: {
     labels: {
       style: {
-        color: textColor,
+        fontWeight: font.weight.bold,
+        fontSize: font.size.xs,
+        color: font.color.white,
       },
+    },
+  },
+  tooltip: {
+    animation: false,
+    shape: 'square',
+    style: {
+      fontSize: font.size.sm,
+      backgroundColor: font.color.white,
     },
   },
 };
@@ -50,6 +80,7 @@ const themeOptions: Options = {
  */
 const dateFormat = {
   day: '%m/%e(%a) %H:%M',
+  second: '%m/%e(%a) %H:%M:%S',
 };
 const displayOptions: Options = {
   credits: {
@@ -63,6 +94,7 @@ const displayOptions: Options = {
   },
   tooltip: {
     dateTimeLabelFormats: dateFormat,
+    hideDelay: 200,
   },
   xAxis: {
     dateTimeLabelFormats: dateFormat,
