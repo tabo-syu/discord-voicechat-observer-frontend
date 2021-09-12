@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
-import Layout from '../../../components/layouts/DefaultLayout';
-import GuildLayout from '../../../components/layouts/GuildLayout';
+import Layout from '../../../layouts/DefaultLayout';
+import GuildLayout from '../../../layouts/GuildLayout';
 import { ReactElement } from 'react';
 
 const Page = () => {

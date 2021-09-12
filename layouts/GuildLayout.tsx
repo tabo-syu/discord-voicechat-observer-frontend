@@ -1,14 +1,10 @@
 import React from 'react';
 import { Box, Flex } from '@chakra-ui/react';
-import GuildHeader from '../../components/GuildHeader';
-import VoiceChannelsList from '../../components/VoiceChannelsList';
-import UsersList from '../../components/UsersList';
-import SideNav from '../../components/SideNav';
-import {
-  useGuild,
-  useVoiceChannels,
-  useGuildParticipants,
-} from '../../utils/swr';
+import GuildHeader from '../components/GuildHeader';
+import VoiceChannelsList from '../components/VoiceChannelsList';
+import UsersList from '../components/UsersList';
+import SideNav from '../components/SideNav';
+import { useGuild, useVoiceChannels, useGuildParticipants } from '../utils/swr';
 
 type Props = {
   guildId: string;
@@ -32,6 +28,7 @@ const Layout: React.VFC<Props> = (props) => {
           </Box>
           <Box marginY='5' paddingLeft='3' paddingRight='3'>
             <UsersList
+              guildId={props.guildId}
               users={participants.data}
               isLoading={participants.isLoading}
             />

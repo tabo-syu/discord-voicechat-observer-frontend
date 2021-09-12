@@ -67,7 +67,7 @@ const SessionsTable: React.VFC<TableProps> = (props) => {
               <Td>{index + 1}</Td>
               <Td>
                 <Link
-                  href={`/guilds/${props.guildId}/${props.voiceChannelId}/${session.id}`}
+                  href={`/guilds/${props.guildId}/channels/${props.voiceChannelId}/${session.id}`}
                   passHref
                 >
                   <LinkOverlay>{utcToTokyo(session.startedAt)}</LinkOverlay>
@@ -75,7 +75,7 @@ const SessionsTable: React.VFC<TableProps> = (props) => {
               </Td>
               <Td>
                 <Link
-                  href={`/guilds/${props.guildId}/${props.voiceChannelId}/${session.id}`}
+                  href={`/guilds/${props.guildId}/channels/${props.voiceChannelId}/${session.id}`}
                   passHref
                 >
                   <LinkOverlay>{utcToTokyo(session.endedAt)}</LinkOverlay>
@@ -83,7 +83,7 @@ const SessionsTable: React.VFC<TableProps> = (props) => {
               </Td>
               <Td>
                 <Link
-                  href={`/guilds/${props.guildId}/${props.voiceChannelId}/${session.id}`}
+                  href={`/guilds/${props.guildId}/channels/${props.voiceChannelId}/${session.id}`}
                   passHref
                 >
                   <LinkOverlay>
@@ -93,7 +93,7 @@ const SessionsTable: React.VFC<TableProps> = (props) => {
               </Td>
               <Td>
                 <Link
-                  href={`/guilds/${props.guildId}/${props.voiceChannelId}/${session.id}`}
+                  href={`/guilds/${props.guildId}/channels/${props.voiceChannelId}/${session.id}`}
                   passHref
                 >
                   <LinkOverlay>

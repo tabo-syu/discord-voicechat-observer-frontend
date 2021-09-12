@@ -10,6 +10,7 @@ import {
 import { UserResponse } from '../utils/types';
 
 type Props = {
+  guildId: string;
   users: UserResponse[];
   isLoading: boolean;
 };
@@ -27,7 +28,7 @@ const UsersList: React.VFC<Props> = (props) => {
         <ChakraLink
           key={user.id}
           as={Link}
-          href={`/users/${user.id}`}
+          href={`/guilds/${props.guildId}/users/${user.id}`}
           passHref
           marginTop='1'
         >

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
-import MainContentHeader from '../../components/MainContentHeader';
+import MainContentHeader from '../components/MainContentHeader';
 import { MdVolumeUp } from 'react-icons/md';
-import { useVoiceChannel } from '../../utils/swr';
+import { useVoiceChannel } from '../utils/swr';
 
 type Props = {
   voiceChannelId: string;

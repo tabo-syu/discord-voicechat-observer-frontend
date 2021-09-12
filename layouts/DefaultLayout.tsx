@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Grid, GridItem } from '@chakra-ui/react';
-import GlobalFooter from '../GlobalFooter';
-import GuildsMenu from '../GuildsMenu';
+import GlobalFooter from '../components/GlobalFooter';
+import GuildsMenu from '../components/GuildsMenu';
 
 type Props = {
   children: React.ReactNode;

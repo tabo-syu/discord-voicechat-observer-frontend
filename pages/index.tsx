@@ -1,4 +1,4 @@
-import Layout from '../components/layouts/DefaultLayout';
+import Layout from '../layouts/DefaultLayout';
 import { ReactElement } from 'react';
 import Head from 'next/head';
 

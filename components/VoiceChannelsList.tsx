@@ -22,7 +22,7 @@ const VoiceChannelsList: React.VFC<Props> = (props) => {
         <ChakraLink
           key={voiceChannel.id}
           as={Link}
-          href={`/guilds/${voiceChannel.guildId}/${voiceChannel.id}`}
+          href={`/guilds/${voiceChannel.guildId}/channels/${voiceChannel.id}`}
           passHref
         >
           <Button
